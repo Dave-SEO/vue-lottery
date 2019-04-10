@@ -195,6 +195,7 @@
                 </div>
             </div>
         </div>
+        <button @click="reload">刷新</button>
     </div>
 </template>
 
@@ -203,6 +204,43 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
+      width: ''
+    }
+  },
+  watch: {
+    'width': function (old, xin) {
+      console.log(old, xin)
+      this.reload()
+    }
+  },
+  mounted () {
+    // $(window).resize(function () {
+    //   window.location.href = url
+    //   console.log(window.location.reload)
+    // })
+
+    // setInterval(function () {
+    //   console.log('setInterval')
+    //   location.reload()
+    // }, 5000)
+    // var that = this
+    // $(window).resize(function () {
+    //   console.log('resize')
+    //   document.location.reload()
+    //   document.location.reload()
+    //   that.width = $(window).width()
+    // //   location.reload()
+    // })
+
+    window.onresize = function () {
+      console.log('location')
+      window.location.href = ''
+    }
+  },
+  methods: {
+    reload () {
+      location.reload()
+      console.log('methods')
     }
   }
 }
